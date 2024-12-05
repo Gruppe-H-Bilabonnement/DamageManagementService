@@ -1,0 +1,41 @@
+summary: "Add a new damage report"
+description: "Adds a new damage report to the database"
+requestBody:
+  description: "Damage report details"
+  required: true
+  content:
+    application/json:
+      schema:
+        type: "object"
+        properties:
+          car_id:
+            type: "integer"
+            example: 101
+          report_date:
+            type: "string"
+            format: "date"
+            example: "2024-01-01"
+          total_cost:
+            type: "number"
+            example: 150.00
+          damage_description:
+            type: "string"
+            example: "Minor scratch on the left door"
+          status:
+            type: "string"
+            example: "Pending"
+responses:
+  201:
+    description: "Damage report added successfully"
+    content:
+      application/json:
+        schema:
+          type: "object"
+          properties:
+            message:
+              type: "string"
+              example: "Damage report added successfully"
+  400:
+    description: "Bad request due to missing or invalid parameters"
+  500:
+    description: "Internal server error"
