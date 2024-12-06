@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-SQLITE_DB_PATH = os.getenv('SQLITE_DB_PATH')
+SQLITE_DB_PATH = os.getenv('SQLITE_DB_PATH', '/home/damage_report.db')
 
 # Create or connect to SQLite database
 def create_connection():
