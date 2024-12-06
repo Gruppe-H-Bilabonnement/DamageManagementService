@@ -78,7 +78,7 @@ def internal_error(error):
 if __name__ == '__main__':
     try:
         # Create a connection to the database
-        connection = sqlite3.connect('/home/damage_report.db')
+        connection = sqlite3.connect('damage_report.db')
         connection.row_factory = sqlite3.Row 
         cursor = connection.cursor()
         # Create the damage_reports table
