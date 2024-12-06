@@ -144,3 +144,5 @@ def db_retrieve_all_damage_reports_by_car_id(car_id):
         print(f"Database error: {error}")
     finally:
         connection.close()
+
+#Test
