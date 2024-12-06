@@ -1,12 +1,10 @@
 import sqlite3
 import pandas as pd
 
-connection = sqlite3.connect('damage_report.db')
-connection.row_factory = sqlite3.Row 
-
 def create_damage_reports_table():
     try:
-        # Create a cursor object
+        connection = sqlite3.connect('damage_report.db')
+        connection.row_factory = sqlite3.Row 
         cursor = connection.cursor()
         # Create the damage_reports table
         cursor.execute("""
