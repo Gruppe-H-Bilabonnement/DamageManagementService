@@ -1,9 +1,17 @@
 import sqlite3
 import pandas as pd
+from dotenv import load_dotenv
+import os
+
+# Get environment variables
+load_dotenv()
+
+SQLITE_DB_PATH = os.getenv('SQLITE_DB_PATH', 'damage_report.db')
+
 
 def create_damage_reports_table():
     try:
-        connection = sqlite3.connect('damage_report.db')
+        connection = sqlite3.connect(SQLITE_DB_PATH)
         connection.row_factory = sqlite3.Row 
         cursor = connection.cursor()
         # Create the damage_reports table
