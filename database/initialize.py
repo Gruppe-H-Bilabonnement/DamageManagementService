@@ -3,8 +3,6 @@ import sqlite3
 import pandas as pd
 from database.connection import create_connection
 
-
-
 def create_damage_reports_table():
     try:
         # Create a connection to the database

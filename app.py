@@ -4,6 +4,7 @@ from database.initialize import create_damage_reports_table
 from api.routes import damage_management_routes
 from swagger.config import init_swagger
 from flasgger import swag_from
+import sqlite3
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -75,5 +76,27 @@ def internal_error(error):
 
 # Init database and run the app
 if __name__ == '__main__':
-    create_damage_reports_table()
+    try:
+        # Create a connection to the database
+        connection = sqlite3.connect('/home/damage_report.db')
+        connection.row_factory = sqlite3.Row 
+        cursor = connection.cursor()
+        # Create the damage_reports table
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS damage_reports (
+            report_id INTEGER PRIMARY KEY,
+            car_id INTEGER NOT NULL,
+            report_date DATE NOT NULL,
+            total_cost FLOAT NOT NULL,
+            damage_description TEXT NOT NULL,
+            status TEXT NOT NULL
+        )
+        """)
+    except sqlite3.Error as e:
+        print(f"Error creating damage_reports table: {e}")
+    finally:
+        connection.commit()
+        connection.close()
+
+    #create_damage_reports_table()
     app.run(host='0.0.0.0', port=80)
