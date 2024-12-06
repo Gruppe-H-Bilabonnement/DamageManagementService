@@ -1,5 +1,20 @@
 summary: "Add a new damage report"
-description: "Adds a new damage report to the database"
+description: "Adds a new damage report to the database, accepting parameters and a JSON body"
+parameters:
+  - name: "priority"
+    in: "query"
+    description: "Optional priority level for the damage report (e.g., Low, Medium, High)"
+    required: false
+    schema:
+      type: "string"
+      example: "High"
+  - name: "submitter"
+    in: "query"
+    description: "Name or identifier of the person submitting the report"
+    required: false
+    schema:
+      type: "string"
+      example: "JohnDoe123"
 requestBody:
   description: "Damage report details"
   required: true
