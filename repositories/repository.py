@@ -5,7 +5,8 @@ from database.connection import create_connection
 # Retrieve all damage reports
 def db_retrieve_all_damage_reports():
     try:
-        connection = create_connection()
+        connection = sqlite3.connect('damage_report.db')
+        connection.row_factory = sqlite3.Row 
         cursor = connection.cursor()
 
         # Retrieve all damage reports
