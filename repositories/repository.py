@@ -48,7 +48,8 @@ def db_retrieve_damage_report_by_id(report_id):
 # Add a new damage report
 def db_add_new_damage_report(data):
     try:
-        connection = create_connection()
+        connection = sqlite3.connect('damage_report.db')
+        connection.row_factory = sqlite3.Row 
         cursor = connection.cursor()
 
         cursor.execute(
