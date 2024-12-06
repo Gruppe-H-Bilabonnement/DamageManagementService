@@ -1,12 +1,11 @@
 import sqlite3
-from database.connection import create_connection
 
+connection = sqlite3.connect('damage_report.db')
+connection.row_factory = sqlite3.Row 
 
 # Retrieve all damage reports
 def db_retrieve_all_damage_reports():
     try:
-        connection = sqlite3.connect('damage_report.db')
-        connection.row_factory = sqlite3.Row 
         cursor = connection.cursor()
 
         # Retrieve all damage reports
@@ -26,8 +25,6 @@ def db_retrieve_all_damage_reports():
 # Retrieve a damage report by id
 def db_retrieve_damage_report_by_id(report_id):
     try:
-        connection = sqlite3.connect('damage_report.db')
-        connection.row_factory = sqlite3.Row 
         cursor = connection.cursor()
 
         cursor.execute(
@@ -49,8 +46,6 @@ def db_retrieve_damage_report_by_id(report_id):
 # Add a new damage report
 def db_add_new_damage_report(data):
     try:
-        connection = sqlite3.connect('damage_report.db')
-        connection.row_factory = sqlite3.Row 
         cursor = connection.cursor()
 
         cursor.execute(
@@ -76,8 +71,6 @@ def db_add_new_damage_report(data):
 # Update a damage report by id
 def db_update_damage_report(report_id, data):
     try:
-        connection = sqlite3.connect('damage_report.db')
-        connection.row_factory = sqlite3.Row 
         cursor = connection.cursor()
 
         cursor.execute(
@@ -105,8 +98,6 @@ def db_update_damage_report(report_id, data):
 # Remove a damage report by id
 def db_remove_damage_report_by_id(report_id):
     try:
-        connection = sqlite3.connect('damage_report.db')
-        connection.row_factory = sqlite3.Row 
         cursor = connection.cursor()
 
         cursor.execute(
@@ -124,8 +115,6 @@ def db_remove_damage_report_by_id(report_id):
 # Retrieve all damage reports by car_id
 def db_retrieve_all_damage_reports_by_car_id(car_id):
     try:
-        connection = sqlite3.connect('damage_report.db')
-        connection.row_factory = sqlite3.Row 
         cursor = connection.cursor()
 
         cursor.execute(
