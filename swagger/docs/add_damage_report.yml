@@ -1,22 +1,7 @@
 summary: "Add a new damage report"
-description: "Adds a new damage report to the database, accepting parameters and a JSON body"
-parameters:
-  - name: "priority"
-    in: "query"
-    description: "Optional priority level for the damage report (e.g., Low, Medium, High)"
-    required: false
-    schema:
-      type: "string"
-      example: "High"
-  - name: "submitter"
-    in: "query"
-    description: "Name or identifier of the person submitting the report"
-    required: false
-    schema:
-      type: "string"
-      example: "JohnDoe123"
+description: "Adds a new damage report to the database"
 requestBody:
-  description: "Damage report details"
+  description: "Details of the damage report to be added"
   required: true
   content:
     application/json:
@@ -40,15 +25,15 @@ requestBody:
             example: "2024-01-01"
           total_cost:
             type: "number"
-            description: "The total cost of damage repair"
-            example: 150.00
+            description: "The total cost of the damage repair"
+            example: 300.00
           damage_description:
             type: "string"
-            description: "A brief description of the damage"
-            example: "Minor scratch on the left door"
+            description: "A detailed description of the damage"
+            example: "Front bumper damaged due to collision"
           status:
             type: "string"
-            description: "The current status of the damage report (e.g., Pending, Completed)"
+            description: "The current status of the report (e.g., Pending, Completed)"
             example: "Pending"
 responses:
   201:
@@ -60,7 +45,7 @@ responses:
           properties:
             message:
               type: "string"
-              description: "Confirmation message for successful addition"
+              description: "Confirmation of successful addition"
               example: "Damage report added successfully"
   400:
     description: "Bad request due to missing or invalid parameters"
@@ -71,8 +56,8 @@ responses:
           properties:
             error:
               type: "string"
-              description: "Details of the validation or request error"
-              example: "Invalid car_id provided"
+              description: "Details of the error"
+              example: "Missing required field: car_id"
   500:
     description: "Internal server error"
     content:
