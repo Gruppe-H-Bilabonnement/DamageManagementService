@@ -7,22 +7,33 @@ requestBody:
     application/json:
       schema:
         type: "object"
+        required:
+          - car_id
+          - report_date
+          - total_cost
+          - damage_description
+          - status
         properties:
           car_id:
             type: "integer"
+            description: "The ID of the car associated with the damage report"
             example: 101
           report_date:
             type: "string"
             format: "date"
+            description: "The date when the damage was reported (YYYY-MM-DD)"
             example: "2024-01-01"
           total_cost:
             type: "number"
+            description: "The total cost of damage repair"
             example: 150.00
           damage_description:
             type: "string"
+            description: "A brief description of the damage"
             example: "Minor scratch on the left door"
           status:
             type: "string"
+            description: "The current status of the damage report (e.g., Pending, Completed)"
             example: "Pending"
 responses:
   201:
@@ -34,8 +45,27 @@ responses:
           properties:
             message:
               type: "string"
+              description: "Confirmation message for successful addition"
               example: "Damage report added successfully"
   400:
     description: "Bad request due to missing or invalid parameters"
+    content:
+      application/json:
+        schema:
+          type: "object"
+          properties:
+            error:
+              type: "string"
+              description: "Details of the validation or request error"
+              example: "Invalid car_id provided"
   500:
     description: "Internal server error"
+    content:
+      application/json:
+        schema:
+          type: "object"
+          properties:
+            error:
+              type: "string"
+              description: "Details of the server error"
+              example: "Internal server error"
