@@ -11,7 +11,6 @@ from repositories.repository import (
 
 damage_management_routes = Blueprint('damage_management_routes', __name__)
 
-
 # Get all damage reports
 @damage_management_routes.route('/all', methods=['GET'])
 @swag_from('../swagger/docs/get_all_damage_reports.yml')
