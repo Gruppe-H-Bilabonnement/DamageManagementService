@@ -1,7 +1,7 @@
 summary: "Add a new damage report"
 description: "Adds a new damage report to the database"
 requestBody:
-  description: "Details of the damage report to be added"
+  description: "The damage report object to be added to the database"
   required: true
   content:
     application/json:
@@ -25,6 +25,7 @@ requestBody:
             example: "2024-01-01"
           total_cost:
             type: "number"
+            format: "float"
             description: "The total cost of the damage repair"
             example: 300.00
           damage_description:
@@ -33,7 +34,7 @@ requestBody:
             example: "Front bumper damaged due to collision"
           status:
             type: "string"
-            description: "The current status of the report (e.g., Pending, Completed)"
+            description: "The current status of the damage report (e.g., Pending, Completed)"
             example: "Pending"
 responses:
   201:
@@ -58,6 +59,17 @@ responses:
               type: "string"
               description: "Details of the error"
               example: "Missing required field: car_id"
+  405:
+    description: "Invalid input"
+    content:
+      application/json:
+        schema:
+          type: "object"
+          properties:
+            error:
+              type: "string"
+              description: "Details of the invalid input"
+              example: "Invalid input format"
   500:
     description: "Internal server error"
     content:
