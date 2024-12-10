@@ -5,7 +5,7 @@ import os
 # Get environment variables
 load_dotenv()
 
-SQLITE_DB_PATH = os.getenv('SQLITE_DB_PATH', 'damage_report.db')
+SQLITE_DB_PATH = os.getenv('SQLITE_DB_PATH', '/home/damage_report.db')
 
 # Retrieve all damage reports
 def db_retrieve_all_damage_reports():
