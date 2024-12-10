@@ -77,3 +77,6 @@ def internal_error(error):
 # Init database and run the app
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
+
+
+#Test
