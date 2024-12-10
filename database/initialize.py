@@ -6,10 +6,10 @@ import os
 # Get environment variables
 load_dotenv()
 
-SQLITE_DB_PATH = os.getenv('SQLITE_DB_PATH', 'damage_report.db')
+SQLITE_DB_PATH = os.getenv('SQLITE_DB_PATH', '/home/damage_report.db')
 
 
-def create_damage_reports_table():
+def init_db():
     try:
         connection = sqlite3.connect(SQLITE_DB_PATH)
         connection.row_factory = sqlite3.Row 
