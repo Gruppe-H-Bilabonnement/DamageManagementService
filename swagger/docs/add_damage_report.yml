@@ -1,71 +1,64 @@
+Add a New Damage Report
+---
+tags:
+  - Damage Management
 summary: "Add a new damage report"
 description: "Adds a new damage report to the database"
-requestBody:
-  description: "Details of the damage report to be added"
-  required: true
-  content:
-    application/json:
-      schema:
-        type: "object"
-        required:
-          - car_id
-          - report_date
-          - total_cost
-          - damage_description
-          - status
-        properties:
-          car_id:
-            type: "integer"
-            description: "The ID of the car associated with the damage report"
-            example: 101
-          report_date:
-            type: "string"
-            format: "date"
-            description: "The date when the damage was reported (YYYY-MM-DD)"
-            example: "2024-01-01"
-          total_cost:
-            type: "number"
-            description: "The total cost of the damage repair"
-            example: 300.00
-          damage_description:
-            type: "string"
-            description: "A detailed description of the damage"
-            example: "Front bumper damaged due to collision"
-          status:
-            type: "string"
-            description: "The current status of the report (e.g., Pending, Completed)"
-            example: "Pending"
+consumes:
+  - application/json
+produces:
+  - application/json
+parameters:
+  - name: body
+    in: body
+    required: true
+    schema:
+      type: object
+      required:
+        - car_id
+        - report_date
+        - total_cost
+        - damage_description
+        - status
+      properties:
+        car_id:
+          type: integer
+          example: 101
+        report_date:
+          type: string
+          format: date
+          example: "2024-01-01"
+        total_cost:
+          type: number
+          example: 300.00
+        damage_description:
+          type: string
+          example: "Front bumper damaged due to collision"
+        status:
+          type: string
+          example: "Pending"
 responses:
   201:
     description: "Damage report added successfully"
-    content:
-      application/json:
-        schema:
-          type: "object"
-          properties:
-            message:
-              type: "string"
-              description: "Confirmation of successful addition"
-              example: "Damage report added successfully"
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Damage report added successfully"
   400:
-    description: "Bad request due to missing or invalid parameters"
-    content:
-      application/json:
-        schema:
-          type: "object"
-          properties:
-            error:
-              type: "string"
-              description: "Details of the error"
-              example: "Missing required field: car_id"
+    description: "Invalid request payload"
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Missing required field: car_id"
   500:
     description: "Internal server error"
-    content:
-      application/json:
-        schema:
-          type: "object"
-          properties:
-            error:
-              type: "string"
-              description: "Details of the server error"
-              example: "Internal server error"
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Internal server error"

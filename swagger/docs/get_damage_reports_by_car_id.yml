@@ -1,3 +1,6 @@
+
+tags:
+  - Damage Management
 summary: "Retrieve all damage reports by car ID"
 description: "Fetches all damage reports associated with a specific car ID from the database"
 parameters:

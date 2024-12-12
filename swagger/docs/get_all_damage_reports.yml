@@ -1,3 +1,6 @@
+
+tags:
+  - Damage Management
 summary: "Retrieve all damage reports"
 description: "Fetches all damage reports from the database"
 responses:

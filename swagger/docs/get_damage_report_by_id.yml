@@ -1,3 +1,6 @@
+
+tags:
+  - Damage Management
 summary: "Retrieve a damage report by ID"
 description: "Fetches a specific damage report from the database by its ID"
 parameters:
