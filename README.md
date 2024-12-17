@@ -91,15 +91,8 @@ car-management-service/
 ## Documentation
 
 ### Swagger UI
-Interactive API documentation available at: '../api/v1/docs'
+Interactive API documentation available at: 'https://group-h-damage-management-service-ejh4byctd4hvh9dr.northeurope-01.azurewebsites.net/api/v1/docs'
 
 ---
-
-
-
-
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
 
 
